@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next mist use-motion" lang="">
+<html class="theme-next gemini use-motion" lang="">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="Markdown,hexo," />
+  <meta name="keywords" content="Markdown,hexo,Java," />
 
 
 
@@ -87,14 +87,14 @@
 
 
 <meta name="description" content="Markdown插入图片插入本地图片1![Alt text](图片链接 &amp;quot;optional title&amp;quot;)">
-<meta name="keywords" content="Markdown,hexo">
+<meta name="keywords" content="Markdown,hexo,Java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Markdown Edition">
 <meta property="og:url" content="https://gaomc66.github.io/2018/06/22/Markdown/index.html">
 <meta property="og:site_name" content="ReaperBuilder">
 <meta property="og:description" content="Markdown插入图片插入本地图片1![Alt text](图片链接 &amp;quot;optional title&amp;quot;)">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-06-22T11:13:00.842Z">
+<meta property="og:updated_time" content="2018-06-26T03:03:03.844Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Markdown Edition">
 <meta name="twitter:description" content="Markdown插入图片插入本地图片1![Alt text](图片链接 &amp;quot;optional title&amp;quot;)">
@@ -105,7 +105,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/ReBulder/',
-    scheme: 'Mist',
+    scheme: 'Gemini',
     version: '5.1.4',
     sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -305,8 +305,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2018-06-22T19:13:00+08:00">
-                2018-06-22
+              <time title="Post modified" itemprop="dateModified" datetime="2018-06-26T11:03:03+08:00">
+                2018-06-26
               </time>
             
           </span>
@@ -383,6 +383,33 @@
 <p><strong>主要函数</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// sun.misc.*包</span></span><br><span class="line"><span class="keyword">import</span> sun.misc.BASE64Decoder;</span><br><span class="line"><span class="keyword">import</span> sun.misc.BASE64Encoder;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 编码</span></span><br><span class="line">BASE64Encoder encoder = <span class="keyword">new</span> BASE64Encoder();</span><br><span class="line">encoder.encode(data)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 解码</span></span><br><span class="line">BASE64Decoder decoder = <span class="keyword">new</span> BASE64Decoder();</span><br><span class="line"><span class="keyword">byte</span>[] b = decoder.decodeBuffer(imgStr);</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;b.length;++i)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(b[i]&lt;<span class="number">0</span>)</span><br><span class="line">    &#123;<span class="comment">//调整异常数据</span></span><br><span class="line">        b[i]+=<span class="number">256</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// package cn.com;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.FileInputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.FileOutputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.InputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.OutputStream;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> sun.misc.BASE64Decoder;</span><br><span class="line"><span class="keyword">import</span> sun.misc.BASE64Encoder;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.regex.Matcher;</span><br><span class="line"><span class="keyword">import</span> java.util.regex.Pattern;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Base64Test</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        String strImg = GetImageStr();</span><br><span class="line">        String strD = replaceBlank(strImg);</span><br><span class="line">        System.out.println(strD);</span><br><span class="line">        GenerateImage(strImg);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//图片转化成base64字符串</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">GetImageStr</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;<span class="comment">//将图片文件转化为字节数组字符串，并对其进行Base64编码处理</span></span><br><span class="line">        String imgFile = <span class="string">"./figure1.png"</span>;<span class="comment">//待处理的图片</span></span><br><span class="line">        InputStream in = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">byte</span>[] data = <span class="keyword">null</span>;</span><br><span class="line">        <span class="comment">//读取图片字节数组</span></span><br><span class="line">        <span class="keyword">try</span></span><br><span class="line">        &#123;</span><br><span class="line">            in = <span class="keyword">new</span> FileInputStream(imgFile);</span><br><span class="line">            data = <span class="keyword">new</span> <span class="keyword">byte</span>[in.available()];</span><br><span class="line">            in.read(data);</span><br><span class="line">            in.close();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">catch</span> (IOException e)</span><br><span class="line">        &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//对字节数组Base64编码</span></span><br><span class="line">        BASE64Encoder encoder = <span class="keyword">new</span> BASE64Encoder();</span><br><span class="line">        <span class="keyword">return</span> encoder.encode(data);<span class="comment">//返回Base64编码过的字节数组字符串</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//base64字符串转化成图片</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">GenerateImage</span><span class="params">(String imgStr)</span></span></span><br><span class="line"><span class="function">    </span>&#123;   <span class="comment">//对字节数组字符串进行Base64解码并生成图片</span></span><br><span class="line">        <span class="keyword">if</span> (imgStr == <span class="keyword">null</span>) <span class="comment">//图像数据为空</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        BASE64Decoder decoder = <span class="keyword">new</span> BASE64Decoder();</span><br><span class="line">        <span class="keyword">try</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//Base64解码</span></span><br><span class="line">            <span class="keyword">byte</span>[] b = decoder.decodeBuffer(imgStr);</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;b.length;++i)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(b[i]&lt;<span class="number">0</span>)</span><br><span class="line">                &#123;<span class="comment">//调整异常数据</span></span><br><span class="line">                    b[i]+=<span class="number">256</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//生成jpeg图片</span></span><br><span class="line">            String imgFilePath = <span class="string">"./figure2.png"</span>;<span class="comment">//新生成的图片</span></span><br><span class="line">            OutputStream out = <span class="keyword">new</span> FileOutputStream(imgFilePath);</span><br><span class="line">            out.write(b);</span><br><span class="line">            out.flush();</span><br><span class="line">            out.close();</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">catch</span> (Exception e)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">replaceBlank</span><span class="params">(String str)</span> </span>&#123;</span><br><span class="line">        String dest = <span class="string">""</span>;</span><br><span class="line">        <span class="keyword">if</span> (str!=<span class="keyword">null</span>) &#123;</span><br><span class="line">            Pattern p = Pattern.compile(<span class="string">"\\s*|\t|\r|\n"</span>);</span><br><span class="line">            Matcher m = p.matcher(str);</span><br><span class="line">            dest = m.replaceAll(<span class="string">""</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dest;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="Markdown-插入表格"><a href="#Markdown-插入表格" class="headerlink" title="Markdown 插入表格"></a>Markdown 插入表格</h1><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># First "|" can be ignored</span></span><br><span class="line"><span class="section"># 表头</span></span><br><span class="line">| Name| Academy | score |</span><br><span class="line"><span class="section"># 标记行 “-”正常 “：-：”居中 “-：”靠右</span></span><br><span class="line">| - | :-: | -: |</span><br><span class="line">| Harry Potter | Gryffindor| 90 |</span><br><span class="line">| Hermione Granger | Gryffindor | 100 |</span><br><span class="line">| Draco Malfoy | Slytherin | 90 |</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th style="text-align:center">Academy</th>
+<th style="text-align:right">score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Harry Potter</td>
+<td style="text-align:center">Gryffindor</td>
+<td style="text-align:right">90</td>
+</tr>
+<tr>
+<td>Hermione Granger</td>
+<td style="text-align:center">Gryffindor</td>
+<td style="text-align:right">100</td>
+</tr>
+<tr>
+<td>Draco Malfoy</td>
+<td style="text-align:center">Slytherin</td>
+<td style="text-align:right">90</td>
+</tr>
+</tbody>
+</table>
 
       
     </div>
@@ -403,6 +430,8 @@
             <a href="/ReBulder/tags/Markdown/" rel="tag"># Markdown</a>
           
             <a href="/ReBulder/tags/hexo/" rel="tag"># hexo</a>
+          
+            <a href="/ReBulder/tags/Java/" rel="tag"># Java</a>
           
         </div>
       
@@ -504,7 +533,7 @@
               
                 <a href="/ReBulder/archives/">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -515,7 +544,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/ReBulder/categories/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -526,7 +555,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/ReBulder/tags/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -575,7 +604,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Markdown插入图片"><span class="nav-number">1.</span> <span class="nav-text">Markdown插入图片</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java实现图片转换成Base64编码"><span class="nav-number">2.</span> <span class="nav-text">Java实现图片转换成Base64编码</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Markdown插入图片"><span class="nav-number">1.</span> <span class="nav-text">Markdown插入图片</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java实现图片转换成Base64编码"><span class="nav-number">2.</span> <span class="nav-text">Java实现图片转换成Base64编码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Markdown-插入表格"><span class="nav-number">3.</span> <span class="nav-text">Markdown 插入表格</span></a></li></ol></div>
             
 
           </div>
@@ -613,7 +642,7 @@
 
 
 
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
 
 
 
@@ -712,6 +741,13 @@
 
   
   
+
+
+  <script type="text/javascript" src="/ReBulder/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/ReBulder/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
 
   
   <script type="text/javascript" src="/ReBulder/js/src/scrollspy.js?v=5.1.4"></script>
