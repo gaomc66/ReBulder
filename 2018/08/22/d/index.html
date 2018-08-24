@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="node js,express js," />
 
 
 
@@ -86,14 +86,18 @@
 
 
 
+<meta name="description" content="##路由 路由是指如何定义应用的端点（URIs）以及如何响应客户端的请求。 路由是由一个 URI、HTTP 请求（GET、POST等）和若干个句柄组成，它的结构如下： app.METHOD(path, [callback…], callback)， app 是 express 对象的一个实例， METHOD 是一个 HTTP 请求方法， path 是服务器上的路径， callback 是当路由匹配">
+<meta name="keywords" content="node js,express js">
 <meta property="og:type" content="article">
 <meta property="og:title" content="d">
 <meta property="og:url" content="https://gaomc66.github.io/2018/08/22/d/index.html">
 <meta property="og:site_name" content="ReaperBuilder">
+<meta property="og:description" content="##路由 路由是指如何定义应用的端点（URIs）以及如何响应客户端的请求。 路由是由一个 URI、HTTP 请求（GET、POST等）和若干个句柄组成，它的结构如下： app.METHOD(path, [callback…], callback)， app 是 express 对象的一个实例， METHOD 是一个 HTTP 请求方法， path 是服务器上的路径， callback 是当路由匹配">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-22T15:39:28.905Z">
+<meta property="og:updated_time" content="2018-08-24T08:53:06.293Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="d">
+<meta name="twitter:description" content="##路由 路由是指如何定义应用的端点（URIs）以及如何响应客户端的请求。 路由是由一个 URI、HTTP 请求（GET、POST等）和若干个句柄组成，它的结构如下： app.METHOD(path, [callback…], callback)， app 是 express 对象的一个实例， METHOD 是一个 HTTP 请求方法， path 是服务器上的路径， callback 是当路由匹配">
 
 
 
@@ -301,8 +305,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2018-08-22T23:39:28+08:00">
-                2018-08-22
+              <time title="Post modified" itemprop="dateModified" datetime="2018-08-24T16:53:06+08:00">
+                2018-08-24
               </time>
             
           </span>
@@ -335,7 +339,11 @@
       
 
       
-        
+        <p>##路由</p>
+<p>路由是指如何定义应用的端点（URIs）以及如何响应客户端的请求。</p>
+<p>路由是由一个 URI、HTTP 请求（GET、POST等）和若干个句柄组成，它的结构如下： app.METHOD(path, [callback…], callback)， app 是 express 对象的一个实例， METHOD 是一个 HTTP 请求方法， path 是服务器上的路径， callback 是当路由匹配时要执行的函数。</p>
+<p>下面是一个基本的路由示例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</span><br><span class="line"><span class="keyword">var</span> app = express();</span><br><span class="line"></span><br><span class="line"><span class="comment">// respond with "hello world" when a GET request is made to the homepage</span></span><br><span class="line">app.get(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">  res.send(<span class="string">'hello world'</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -349,6 +357,14 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/ReBulder/tags/node-js/" rel="tag"># node js</a>
+          
+            <a href="/ReBulder/tags/express-js/" rel="tag"># express js</a>
+          
+        </div>
       
 
       
@@ -368,6 +384,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/ReBulder/2018/08/24/Express-JS/" rel="prev" title="Express JS">
+                Express JS <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -435,7 +455,7 @@
               
                 <a href="/ReBulder/archives/">
               
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -457,7 +477,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/ReBulder/tags/index.html">
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
