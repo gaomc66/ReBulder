@@ -93,7 +93,7 @@
 <meta property="og:site_name" content="ReaperBuilder">
 <meta property="og:description" content="1234567891011121314req.params.**// get parameter from routesreq.body.**// get parameter from body /*Contains key-value pairs of data submitted in the request body. By default, it is undefined,   and i">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-22T15:39:19.469Z">
+<meta property="og:updated_time" content="2018-09-17T09:52:57.604Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Node JS">
 <meta name="twitter:description" content="1234567891011121314req.params.**// get parameter from routesreq.body.**// get parameter from body /*Contains key-value pairs of data submitted in the request body. By default, it is undefined,   and i">
@@ -288,7 +288,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-21T14:22:06+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-21T14:22:06-04:00">
                 2018-08-21
               </time>
             
@@ -304,8 +304,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2018-08-22T23:39:19+08:00">
-                2018-08-22
+              <time title="Post modified" itemprop="dateModified" datetime="2018-09-17T05:52:57-04:00">
+                2018-09-17
               </time>
             
           </span>
@@ -341,6 +341,9 @@
         <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">req.params.**</span><br><span class="line"><span class="comment">// get parameter from routes</span></span><br><span class="line"></span><br><span class="line">req.body.**</span><br><span class="line"><span class="comment">// get parameter from body </span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">Contains key-value pairs of data submitted in the request body. By default, it is undefined,</span></span><br><span class="line"><span class="comment">   and is populated when you use body-parsing middleware such as body-parser and multer.</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line">req.query.**</span><br><span class="line"><span class="comment">// get parameter from query (after '?')</span></span><br><span class="line"><span class="comment">// eg. http://localhost:3000/search?id=1&amp;name=a</span></span><br></pre></td></tr></table></figure>
 <h4 id="Manipulating-the-dataset-with-limit-offset-order-and-group"><a href="#Manipulating-the-dataset-with-limit-offset-order-and-group" class="headerlink" title="Manipulating the dataset with limit, offset, order and group"></a>Manipulating the dataset with limit, offset, order and group</h4><p>To get more relevant data, you can use limit, offset, order and grouping:</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//Sequelize</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// limit the results of the query</span></span><br><span class="line">Project.findAll(&#123; <span class="attr">limit</span>: <span class="number">10</span> &#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// step over the first 10 elements</span></span><br><span class="line">Project.findAll(&#123; <span class="attr">offset</span>: <span class="number">10</span> &#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// step over the first 10 elements, and take 2</span></span><br><span class="line">Project.findAll(&#123; <span class="attr">offset</span>: <span class="number">10</span>, <span class="attr">limit</span>: <span class="number">2</span> &#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="Sequelize"><a href="#Sequelize" class="headerlink" title="Sequelize"></a>Sequelize</h2><h3 id="hasMany-amp-BelongsToMany"><a href="#hasMany-amp-BelongsToMany" class="headerlink" title="hasMany &amp; BelongsToMany"></a>hasMany &amp; BelongsToMany</h3><p>(Project)<figure class="highlight plain"><figcaption><span>getter will be ```user.getProjects()```. If the association is aliased, use the alias instead, e.g. ```User.hasMany(Project, &#123; as: 'jobs' &#125;)``` will be user.getJobs().</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">``` </span><br><span class="line">public static hasMany(target: Model, options: object): HasMany</span><br></pre></td></tr></table></figure></p>
+<p>Creates a 1:m association between this (the source) and the provided target. The foreign key is added on the target.</p>
+<h5 id="Model-gt-DataBase"><a href="#Model-gt-DataBase" class="headerlink" title="Model -&gt; DataBase"></a>Model -&gt; DataBase</h5><h5 id="Instance-gt-rowIn-the-API-reference-below-add-the-name-of-the-association-to-the-method-e-g-for-User-hasMany"><a href="#Instance-gt-rowIn-the-API-reference-below-add-the-name-of-the-association-to-the-method-e-g-for-User-hasMany" class="headerlink" title="Instance -&gt; rowIn the API reference below, add the name of the association to the method, e.g. for `User.hasMany"></a>Instance -&gt; rowIn the API reference below, add the name of the association to the method, e.g. for <code>`</code>User.hasMany</h5>
       
     </div>
     
@@ -524,7 +527,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Manipulating-the-dataset-with-limit-offset-order-and-group"><span class="nav-number">1.</span> <span class="nav-text">Manipulating the dataset with limit, offset, order and group</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Manipulating-the-dataset-with-limit-offset-order-and-group"><span class="nav-number">1.</span> <span class="nav-text">Manipulating the dataset with limit, offset, order and group</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sequelize"><span class="nav-number"></span> <span class="nav-text">Sequelize</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#hasMany-amp-BelongsToMany"><span class="nav-number"></span> <span class="nav-text">hasMany &amp; BelongsToMany</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Model-gt-DataBase"><span class="nav-number">0.1.</span> <span class="nav-text">Model -&gt; DataBase</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Instance-gt-rowIn-the-API-reference-below-add-the-name-of-the-association-to-the-method-e-g-for-User-hasMany"><span class="nav-number">0.2.</span> <span class="nav-text">Instance -&gt; rowIn the API reference below, add the name of the association to the method, e.g. for `User.hasMany</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -544,7 +547,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
