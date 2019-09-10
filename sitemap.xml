@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://gaomc66.github.io/2018/06/22/HexoConfig/</loc>
+    
+    <lastmod>2019-09-10T04:07:45.272Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://gaomc66.github.io/2018/08/20/Github-Guide/</loc>
     
-    <lastmod>2019-09-10T04:06:23.063Z</lastmod>
+    <lastmod>2019-09-10T04:07:37.071Z</lastmod>
     
   </url>
   
@@ -19,13 +26,6 @@
     <loc>https://gaomc66.github.io/2018/08/22/Express%20JS/</loc>
     
     <lastmod>2018-08-27T06:57:27.103Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://gaomc66.github.io/2018/06/22/HexoConfig/</loc>
-    
-    <lastmod>2018-08-20T13:59:06.212Z</lastmod>
     
   </url>
   
