@@ -256,6 +256,375 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://gaomc66.github.io/ReBulder/2018/06/22/SecurityFoundation/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mengchen Gao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/ReBulder/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ReaperBuilder">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/ReBulder/2018/06/22/SecurityFoundation/" itemprop="url">Security Foundation</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-22T19:18:02-04:00">
+                2018-06-22
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2018-06-27T22:03:05-04:00">
+                2018-06-27
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/ReBulder/categories/Security/" itemprop="url" rel="index">
+                    <span itemprop="name">Security</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/ReBulder/categories/Security/Foundation/" itemprop="url" rel="index">
+                    <span itemprop="name">Foundation</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="WAF"><a href="#WAF" class="headerlink" title="WAF"></a>WAF</h2><blockquote>
+<p>Web Application Firewall</p>
+</blockquote>
+<p>AWS/阿里云/深信服/华为</p>
+<p>Web应用防火墙（WAF）竞品分析<br><a href="http://www.freebuf.com/articles/web/115407.html" target="_blank" rel="noopener">http://www.freebuf.com/articles/web/115407.html</a></p>
+<p><strong>阿里云</strong>：</p>
+<blockquote>
+<p>对网站或者APP的业务流量进行恶意特征识别及防护，将正常、安全的流量回源到服务器。避免网站服务器被恶意入侵，保障业务的核心数据安全，解决因恶意攻击导致的服务器性能异常问题。</p>
+</blockquote>
+<hr>
+<h2 id="安全管理平台"><a href="#安全管理平台" class="headerlink" title="安全管理平台"></a>安全管理平台</h2><ul>
+<li>基于日志类数据</li>
+<li>关系型数据</li>
+</ul>
+<hr>
+<h2 id="OpenSSL"><a href="#OpenSSL" class="headerlink" title="OpenSSL"></a>OpenSSL</h2><ul>
+<li>OpenSSL: 密码算法库、SSL协议库以及应用程序</li>
+</ul>
+<blockquote>
+<p>OpenSSL 是一个安全套接字层密码库，囊括主要的密码算法、常用的密钥和证书封装管理功能及SSL协议，并提供丰富的应用程序供测试或其它目的使用。</p>
+</blockquote>
+<h3 id="0x01-密码算法库"><a href="#0x01-密码算法库" class="headerlink" title="0x01 密码算法库"></a>0x01 密码算法库</h3><h4 id="对称加密算法"><a href="#对称加密算法" class="headerlink" title="对称加密算法"></a>对称加密算法</h4><p>OpenSSL一共提供了8种对称加密算法，其中7种是分组加密算法，仅有的一种流加密算法是RC4。这7种分组加密算法分别是AES、DES、Blowfish、CAST、IDEA、RC2、RC5，都支持电子密码本模式（ECB）、加密分组链接模式（CBC）、加密反馈模式（CFB）和输出反馈模式（OFB）四种常用的分组密码加密模式。其中，AES使用的加密反馈模式（CFB）和输出反馈模式（OFB）分组长度是128位，其它算法使用的则是64位。事实上，DES算法里面不仅仅是常用的DES算法，还支持三个密钥和两个密钥3DES算法。</p>
+<h4 id="非对称加密算法"><a href="#非对称加密算法" class="headerlink" title="非对称加密算法"></a>非对称加密算法</h4><p>OpenSSL一共实现了4种非对称加密算法，包括DH算法、RSA算法、DSA算法和椭圆曲线算法（EC）。DH算法一般用户密钥交换。RSA算法既可以用于密钥交换，也可以用于数字签名，当然，如果你能够忍受其缓慢的速度，那么也可以用于数据加密。DSA算法则一般只用于数字签名。</p>
+<h4 id="信息摘要算法"><a href="#信息摘要算法" class="headerlink" title="信息摘要算法"></a>信息摘要算法</h4><p>OpenSSL实现了5种信息摘要算法，分别是MD2、MD5、MDC2、SHA（SHA1）和RIPEMD。SHA算法事实上包括了SHA和SHA1两种信息摘要算法，此外，OpenSSL还实现了DSS标准中规定的两种信息摘要算法DSS和DSS1。</p>
+<h3 id="0x02-SSL"><a href="#0x02-SSL" class="headerlink" title="0x02 SSL"></a>0x02 SSL</h3><blockquote>
+<p><strong>SSL</strong> 是SSL是 <strong>Secure Sockets Layer</strong>（安全套接层协议）的缩写，可以在Internet上提供秘密性传输。Netscape公司在推出第一个Web浏览器的同时，提出了SSL协议标准。<strong>其目标是保证两个应用间通信的保密性和可靠性</strong>,可在服务器端和用户端同时实现支持。已经成为Internet上保密通讯的工业标准。<br>SSL能使用户/服务器应用之间的通信不被攻击者窃听，并且始终对服务器进行认证，还可选择对用户进行认证。SSL协议要求建立在可靠的传输层协议(TCP)之上。<strong>SSL协议的优势在于它是与应用层协议独立无关的，高层的应用层协议(例如：HTTP，FTP，TELNET等)能透明地建立于SSL协议之上。</strong> SSL协议在应用层协议通信之前就已经完成加密算法、通信密钥的协商及服务器认证工作。在此之后应用层协议所传送的数据都会被加密，从而保证通信的私密性。</p>
+</blockquote>
+<h3 id="0x03-应用程序"><a href="#0x03-应用程序" class="headerlink" title="0x03 应用程序"></a>0x03 应用程序</h3><h4 id="密钥和证书管理"><a href="#密钥和证书管理" class="headerlink" title="密钥和证书管理"></a>密钥和证书管理</h4><p>密钥和证书管理是PKI的一个重要组成部分，OpenSSL为之提供了丰富的功能，支持多种标准。</p>
+<p>首先，OpenSSL实现了ASN.1的证书和密钥相关标准，提供了对证书、公钥、私钥、证书请求以及CRL等数据对象的DER、PEM和BASE64的编解码功能。OpenSSL提供了产生各种公开密钥对和对称密钥的方法、函数和应用程序，同时提供了对公钥和私钥的DER编解码功能。并实现了私钥的PKCS#12和PKCS#8的编解码功能。OpenSSL在标准中提供了对私钥的加密保护功能，使得密钥可以安全地进行存储和分发。</p>
+<p>在此基础上，OpenSSL实现了对证书的X.509标准编解码、PKCS#12格式的编解码以及PKCS#7的编解码功能。并提供了一种文本数据库，支持证书的管理功能，包括证书密钥产生、请求产生、证书签发、吊销和验证等功能。</p>
+<p>事实上，OpenSSL提供的CA应用程序就是一个小型的证书管理中心（CA），实现了证书签发的整个流程和证书管理的大部分机制。</p>
+<p>调用：<a href="http://man.linuxde.net/openssl" target="_blank" rel="noopener">http://man.linuxde.net/openssl</a></p>
+<h3 id="0x04-C-amp-C-服务器（Command-amp-Control-Server）"><a href="#0x04-C-amp-C-服务器（Command-amp-Control-Server）" class="headerlink" title="0x04 C&amp;C 服务器（Command &amp; Control Server）"></a>0x04 C&amp;C 服务器（Command &amp; Control Server）</h3><blockquote>
+<p>C&amp;C服务器（又称CNC服务器）也就是 Command &amp; Control Server，一般是指挥控制僵尸网络botnet的主控服务器，用来和僵尸网络的每个感染了恶意软件（malware）的宿主机进行通讯并指挥它们的攻 击行为。每个malware的实例通过和它的C&amp;C服务器通讯获得指令进行攻击活动，包括获取DDoS攻击开始的时间和目标，上传从宿主机偷窃的 到的信息，定时给感染机文件加密勒索等。</p>
+</blockquote>
+<p><a href="http://www.topjishu.net/article/53.html" target="_blank" rel="noopener">http://www.topjishu.net/article/53.html</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://gaomc66.github.io/ReBulder/2018/06/22/Markdown/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mengchen Gao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/ReBulder/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ReaperBuilder">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/ReBulder/2018/06/22/Markdown/" itemprop="url">Markdown Edition</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-22T18:14:09-04:00">
+                2018-06-22
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2018-06-25T23:03:03-04:00">
+                2018-06-25
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/ReBulder/categories/Hexo/" itemprop="url" rel="index">
+                    <span itemprop="name">Hexo</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/ReBulder/categories/Hexo/Markdown/" itemprop="url" rel="index">
+                    <span itemprop="name">Markdown</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="Markdown插入图片"><a href="#Markdown插入图片" class="headerlink" title="Markdown插入图片"></a>Markdown插入图片</h1><p><strong>插入本地图片</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![Alt text](图片链接 &quot;optional title&quot;)</span><br></pre></td></tr></table></figure></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/ReBulder/2018/06/22/Markdown/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://gaomc66.github.io/ReBulder/2018/06/22/HexoConfig/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -601,7 +970,7 @@
               
                 <a href="/ReBulder/archives/">
               
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -612,7 +981,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/ReBulder/categories/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -623,7 +992,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/ReBulder/tags/index.html">
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
