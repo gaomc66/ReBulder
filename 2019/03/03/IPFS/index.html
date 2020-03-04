@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Mengchen Gao">
+
+
+    <meta name="subtitle" content="Back-end Developer">
+
+
+
+
+<title>IPFS | ReaperBuilder</title>
+
+
+
+    <link rel="icon" href="/ReBulder/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/ReBulder/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/ReBulder/js/script.js"></script>
+    
+    <script src="/ReBulder/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/ReBulder/">Mengchen&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/ReBulder/archives">Posts</a>
+                
+                    <a class="menu-item" href="/ReBulder/category">Categories</a>
+                
+                    <a class="menu-item" href="/ReBulder/tag">Tags</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/ReBulder/">Mengchen&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/ReBulder/archives">Posts</a>
+                
+                    <a class="menu-item" href="/ReBulder/category">Categories</a>
+                
+                    <a class="menu-item" href="/ReBulder/tag">Tags</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">IPFS</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Mengchen Gao</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">March 3, 2019&nbsp;&nbsp;22:37:05</a>
+                        </span>
+                    
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="IPFS"><a href="#IPFS" class="headerlink" title="IPFS"></a>IPFS</h1><ol>
+<li>IPFS is a protocol<br><strong>a content-addressed file system</strong><br><strong>coordinates content delivery</strong><br>**combine Kademlia + Bittorrent + Git</li>
+</ol>
+<p>#Kademlia协议<br>    一种分布式哈希表。Kademlia是分布式哈希表（Distributed Hash Table, DHT）的一种。而DHT是一类去中心化的分布式系统。在这类系统中，每个节点（node）分别维护一部分的存储内容以及其他节点的路由/地址，使得网络中任何参与者（即节点）发生变更（进入/退出）时，对整个网络造成的影响最小。DHT可以用于构建更复杂的应用，包括分布式文件系统、点对点技术文件分享系统、合作的网页高速缓存、域名系统以及实时通信等。<br>Kademlia算法在2002年由Petar Maymounkov 和 David Mazières 所设计，以异或距离来对哈希表进行分层是其特点。Kademlia后来被eMule、BitTorrent等P2P软件采用作为底层算法。Kademlia可以作为信息安全技术的奠基之一。<br>Kademlia的优点在于：</p>
+<p>对于任意一个有[ 2(n−1) ,2𝑛)个节点的网络，最多只需要n步搜索即可找到目标节点；<br>K-bucket的更新机制一定程度上保持了网络的活性和安全性。<br>Kademlia作为一种高效的分布式路由算法，还可以应用在分布式网络中的安全通讯。众享互联的分布式网络安全解决方案，将单点对单点的信息传输方式改为在多节点的分布式网络中多路径传输。采用Kademlia这种DHT算法，使得物联网设备的通讯信息在分布式网络中能够更快更准确地到达目标设备，并并大大提高了网络攻击者彻底阻断通讯路径的难度，令物联网设备通讯的安全性极大地提高。</p>
+<p>[image:5DD33484-E40F-4C81-B379-94B0A17967AD-10237-00003B78E9D35075/09CB2DCF-5430-4FE7-BBDA-D079910852FE.png]</p>
+<p>[image:EA3CDDF8-6664-4E85-B2B4-32449DD923BC-10237-00003D33EABB589E/09FD7620-FA47-4354-88FF-BB6DA35E7A5C.png]</p>
+<pre><code>*参数*
+- keyspace：ID位数 -&gt; 决定通讯录有几层
+- k：
+    1. 每一层k-bucket里装有k个node信息，即&lt;node ID, IP Address, port&gt;
+    2. 每次查找node时，返回k个node信息
+    3. 对于某个data，离其最近的k个节点会被要求存储这个node
+- α：
+    1. 向其他node发送请求查找某个node时，会向α个node发出请求
+
+*节点的指令*
+- PING：测试节点是否在线
+- STORE：要求一个node存储一份data
+- FIND_NODE：根据节点ID查找节点
+- FIND_VALUE：根据KEY查找一个数据
+
+*k-bucket的维护及更新机制
+- bucket中节点按照最后一次接触的时间倒序排列
+- 执行任一个指令即出发更新
+- 当与节点接触时，检查是否在k-bucket中
+    1. 如果在，则将node挪到k-bucket的最底层（最新）
+    2. 如果不在，PING列表最上面（最旧）节点
+        a. 如果PING通，将旧节点挪到最底层，并丢弃新节点
+        b. 如果PING不同，删除旧节点，并将新节点加入列表
+    - 改机制保证任意节点加入和离开都不影响整体网络
+</code></pre>
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Mengchen Gao</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://gaomc66.github.io/2019/03/03/IPFS/">https://gaomc66.github.io/2019/03/03/IPFS/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/ReBulder/tags/IPFS/"># IPFS</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/ReBulder/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/ReBulder/2019/09/10/Algorithm-INFO6205/">Algorithm-INFO6205</a>
+            
+            
+            <a class="next" rel="next" href="/ReBulder/2019/03/03/Grassmarlin/">Grassmarlin</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Mengchen Gao | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

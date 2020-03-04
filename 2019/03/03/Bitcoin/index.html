@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Mengchen Gao">
+
+
+    <meta name="subtitle" content="Back-end Developer">
+
+
+
+
+<title>Bitcoin | ReaperBuilder</title>
+
+
+
+    <link rel="icon" href="/ReBulder/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/ReBulder/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/ReBulder/js/script.js"></script>
+    
+    <script src="/ReBulder/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/ReBulder/">Mengchen&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/ReBulder/archives">Posts</a>
+                
+                    <a class="menu-item" href="/ReBulder/category">Categories</a>
+                
+                    <a class="menu-item" href="/ReBulder/tag">Tags</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/ReBulder/">Mengchen&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/ReBulder/archives">Posts</a>
+                
+                    <a class="menu-item" href="/ReBulder/category">Categories</a>
+                
+                    <a class="menu-item" href="/ReBulder/tag">Tags</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">Bitcoin</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Mengchen Gao</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">March 3, 2019&nbsp;&nbsp;22:35:05</a>
+                        </span>
+                    
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="Bitcoin"><a href="#Bitcoin" class="headerlink" title="#Bitcoin"></a>#Bitcoin</h1><p>#对称加密<br>DES、AES、3DES</p>
+<p>#非对称加密<br>公钥公开，私钥自己持有；一般应用于签名场景或密钥协商。</p>
+<p>#账户/地址</p>
+<blockquote>
+<p>比特币账户采用了非对称的加密算法，用户自己保留私钥，对他发出的交易进行签名确认，并公开公钥。<br>比特币的账户地址其实就是用户公钥经过一系列 hash（HASH160，或先进行 SHA256，然后进行 RIPEMD160）及编码运算后生成的 160 位（20 字节）的字符串。</p>
+</blockquote>
+<p>#交易</p>
+<blockquote>
+<p>交易是完成比特币功能的核心概念，一条交易将可能包括如下信息：<br>付款人地址：合法的地址，公钥经过 SHA256 和 RIPEMD160 两次 hash，得到 160 位 hash 串；<br>付款人对交易的签字确认：确保交易内容不被篡改；<br>付款人资金的来源交易 ID：从哪个交易的输出作为本次交易的输入；<br>交易的金额：多少钱，跟输入的差额为交易的服务费；<br>收款人地址：合法的地址；<br>收款人的公钥：收款人的公钥；<br>时间戳：交易何时能生效。<br>网络中节点收到交易信息后，将进行如下检查：</p>
+<p>交易是否已经处理过；<br>交易是否合法。包括地址是否合法、发起交易者是输入地址的合法拥有者、是否是 UTXO；<br>交易的输入之和是否大于输出之和。<br>检查都通过，则将交易标记为合法的未确认交易，并在网络内进行广播。<br><a href="https://blockchain.info/tx/0beca08914de596217f098d744e3fb8da68aa5e00dd8f63a3364b451f3f4a70f" target="_blank" rel="noopener">新的一次交易</a></p>
+</blockquote>
+<p>#脚本（Script）<br><strong>输入脚本</strong></p>
+<blockquote>
+<p>ScriptPubKey: 由付款方对交易设置锁定。用来对能动用这笔交易输出的对象（ 收款方 ） 进行权限控制，例如必须是某个公钥的拥有者才能花费这笔交易。</p>
+</blockquote>
+<p>::<em>P2SH</em>::：Pay-To-Script-Hash，<strong>支付者创建一个输出脚本，里边包含另一个脚本（认领脚本）的哈希，一般用于需要多人签名的场景</strong>，前导字节一般为 0x05；<br>::<em>P2PKH</em>::： Pay-To-Public-Key-Hash，<strong>允许用户将比特币发送到一个或多个典型的比特币地址上</strong>（证明拥有该公钥），前导字节一般为 0x00；<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; scriptPubKey: OP_DUP OP_HASH160 &lt;pubKeyHash&gt; OP_EQUALVERIFY OP_CHECKSIG</span><br></pre></td></tr></table></figure></p>
+<p>// OP_DUP 是复制栈顶元素；<br>// OP_HASH160 是计算 hash 值；<br>// OP_EQUALVERIFY  判断栈顶两元素是否相等；<br>// OP_CHECKSIG 判断签名是否合法。<br>::这条指令实际上保证了只有 pubKey 的拥有者才能合法引用 这个输出。::</p>
+<p>另外一个交易如果要花费这个输出，在引用这个输出的时候，需要提供认领脚本格式为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scriptSig: &lt;sig&gt; &lt;pubKey&gt;</span><br></pre></td></tr></table></figure></p>
+<p>其中， 是拿 pubKey 对应的私钥对交易（全部交易的输出、输入和脚本）hash 值进行签名，pubKey 的 hash 值需要等于 pubKeyHash。<br>进行交易验证时，会按照先 scriptSig 后 scriptPubKey 的顺序进行依次入栈处理，即完整指令为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;sig&gt; &lt;pubKey&gt; OP_DUP OP_HASH160 &lt;pubKeyHash&gt; OP_EQUALVERIFY OP_CHECKSIG</span><br></pre></td></tr></table></figure></p>
+<p>引入脚本机制带来了灵活性，但也引入了更多的安全风险。比特币脚本支持的指令集十分简单，基于栈的处理方式，并且非图灵完备，此外还添加了额外的一些限制（大小限制等）。</p>
+<p>#区块<br>一个区块将主要包括如下内容：<br>4 字节的区块大小信息；<br>80 字节的区块头信息：</p>
+<pre><code>* 版本号：4 字节；
+* 上一个区块头的 SHA256 hash 值：链接到一个合法的块上，32 字节；
+* 包含的所有验证过的交易的 Merkle 树根的哈希值，32 字节；
+* 时间戳：4 字节；
+* 难度指标：4 字节；
+* Nonce：4 字节，PoW 问题的答案；
+* 交易个数计数器：1~9 字节；
+* 
+</code></pre><p>[image:3D93D9D4-26EA-41AD-81E0-CE62DBC8EBCE-56337-0000F3238B85E59E/A93644CA-AB43-46F8-88DC-42E24A4D2B80.png]</p>
+<p>所有交易的具体内容，可变长。</p>
+<p>#共识机制<br>POW &amp; POS</p>
+<p>#LightningNetwork<br>闪电网络通过智能合约来完善链下的交易渠道。（将大量交易放到bitcoin区块外）<br><em>RSMC</em>（Recoverable Sequence Maturity Contract）:“可撤销的顺序成熟度合同”，解决链下交易的确认问题。<br><em>HTLC</em> (Hashed Timelock Contract)：“哈希的带时钟合约”，解决了支付通道的问题。</p>
+<p><a href="https://www.mit.edu/~kardar/teaching/projects/chemotaxis(AndreaSchmidt" target="_blank" rel="noopener">Random Walks</a>/random.htm)</p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Mengchen Gao</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://gaomc66.github.io/2019/03/03/Bitcoin/">https://gaomc66.github.io/2019/03/03/Bitcoin/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/ReBulder/tags/Bitcoin/"># Bitcoin</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/ReBulder/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/ReBulder/2019/03/03/Grassmarlin/">Grassmarlin</a>
+            
+            
+            <a class="next" rel="next" href="/ReBulder/2018/08/22/Express JS/">Express JS</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Mengchen Gao | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>
