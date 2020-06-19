@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Mengchen Gao">
+
+
+    <meta name="subtitle" content="Back-end Developer">
+
+
+
+
+<title>AWS AMI (Build with CircleCI) | ReaperBuilder</title>
+
+
+
+    <link rel="icon" href="/ReBulder/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/ReBulder/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/ReBulder/js/script.js"></script>
+    
+    <script src="/ReBulder/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/ReBulder/">Mengchen&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/ReBulder/archives">Posts</a>
+                
+                    <a class="menu-item" href="/ReBulder/category">Categories</a>
+                
+                    <a class="menu-item" href="/ReBulder/tag">Tags</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/ReBulder/">Mengchen&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/ReBulder/archives">Posts</a>
+                
+                    <a class="menu-item" href="/ReBulder/category">Categories</a>
+                
+                    <a class="menu-item" href="/ReBulder/tag">Tags</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">AWS AMI (Build with CircleCI)</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Mengchen Gao</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">March 6, 2020&nbsp;&nbsp;14:52:56</a>
+                        </span>
+                    
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="Build-AMI-with-CI-CD-CircleCI"><a href="#Build-AMI-with-CI-CD-CircleCI" class="headerlink" title="Build AMI with CI/CD (CircleCI)"></a>Build AMI with CI/CD (CircleCI)</h1><h2 id="1-Configuration-of-EC2-AMI"><a href="#1-Configuration-of-EC2-AMI" class="headerlink" title="1 Configuration of EC2 AMI"></a>1 Configuration of EC2 AMI</h2><h3 id="“Builders”"><a href="#“Builders”" class="headerlink" title="“Builders”:"></a>“Builders”:</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">"builders": [</span><br><span class="line">       &#123;</span><br><span class="line">           <span class="attr">"type"</span>: <span class="string">"amazon-ebs"</span>,</span><br><span class="line">           <span class="attr">"access_key"</span>: <span class="string">"&#123;&#123;user `aws_access_key`&#125;&#125;"</span>,</span><br><span class="line">           <span class="attr">"secret_key"</span>: <span class="string">"&#123;&#123;user `aws_secret_key`&#125;&#125;"</span>,</span><br><span class="line">           <span class="attr">"region"</span>: <span class="string">"&#123;&#123;user `aws_region`&#125;&#125;"</span>,</span><br><span class="line">           <span class="attr">"instance_type"</span>: <span class="string">"t2.micro"</span>,</span><br><span class="line">           <span class="attr">"subnet_id"</span>: <span class="string">"&#123;&#123;user `subnet_id`&#125;&#125;"</span>,</span><br><span class="line">           <span class="attr">"source_ami"</span>: <span class="string">"&#123;&#123;user `source_ami`&#125;&#125;"</span>,</span><br><span class="line">           <span class="attr">"ssh_username"</span>: <span class="string">"&#123;&#123;user `ssh_username`&#125;&#125;"</span>,</span><br><span class="line">           <span class="attr">"ami_name"</span>: <span class="string">"csye6225_&#123;&#123;timestamp&#125;&#125;"</span>,</span><br><span class="line">           <span class="attr">"ami_users"</span>: <span class="string">"&#123;&#123;user `ami_users`&#125;&#125;"</span>,</span><br><span class="line">           <span class="attr">"ami_description"</span>: <span class="string">"Ubuntu AMI for CSYE 6225 - Spring 2020"</span>,</span><br><span class="line">           <span class="attr">"launch_block_device_mappings"</span>: [</span><br><span class="line">               &#123;</span><br><span class="line">                   <span class="attr">"device_name"</span>: <span class="string">"/dev/sda1"</span>,</span><br><span class="line">                   <span class="attr">"volume_size"</span>: <span class="number">8</span>,</span><br><span class="line">                   <span class="attr">"volume_type"</span>: <span class="string">"gp2"</span>,</span><br><span class="line">                   <span class="attr">"delete_on_termination"</span>: <span class="literal">true</span></span><br><span class="line">               &#125;</span><br><span class="line">           ]</span><br><span class="line">       &#125;</span><br><span class="line">   ],</span><br></pre></td></tr></table></figure>
+<h3 id="“Provisioners”"><a href="#“Provisioners”" class="headerlink" title="“Provisioners”:"></a>“Provisioners”:</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">"provisioners": [</span><br><span class="line">      &#123;</span><br><span class="line">          <span class="attr">"type"</span>: <span class="string">"shell"</span>,</span><br><span class="line">          <span class="attr">"environment_vars"</span>: [</span><br><span class="line">              <span class="string">"FOO=foo"</span></span><br><span class="line">          ],</span><br><span class="line">          <span class="attr">"inline"</span>: [</span><br><span class="line">              <span class="string">"sudo apt-get update"</span>,</span><br><span class="line">              <span class="string">"sudo apt-get -y install default-jdk"</span>,</span><br><span class="line">              <span class="string">"sudo apt-get -y install tomcat8"</span>,</span><br><span class="line">              <span class="string">"sudo apt-get install -y tomcat8-docs tomcat8-examples tomcat8-admin"</span></span><br><span class="line">          ]</span><br><span class="line">      &#125;</span><br><span class="line">  ]</span><br></pre></td></tr></table></figure>
+<h3 id="AWS"><a href="#AWS" class="headerlink" title="AWS"></a>AWS</h3>
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Mengchen Gao</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://gaomc66.github.io/2020/03/06/AWS-AMI/">https://gaomc66.github.io/2020/03/06/AWS-AMI/</a></span>
+                    </p>
+                
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/ReBulder/tags/AWS/"># AWS</a>
+                    
+                        <a href="/ReBulder/tags/AMI/"># AMI</a>
+                    
+                        <a href="/ReBulder/tags/CircleCI/"># CircleCI</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/ReBulder/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/ReBulder/2020/03/08/Domain-Name-System-DNS/">Domain Name System</a>
+            
+            
+            <a class="next" rel="next" href="/ReBulder/2020/03/06/AWS-Cloudformation/">AWS Cloudformation</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Mengchen Gao | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

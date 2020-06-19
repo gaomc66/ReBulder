@@ -2,6 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://gaomc66.github.io/2020/03/06/AWS-AMI/</loc>
+    
+    <lastmod>2020-03-12T13:59:56.051Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://gaomc66.github.io/2020/03/06/AWS-Cloudformation/</loc>
+    
+    <lastmod>2020-03-12T13:59:54.936Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://gaomc66.github.io/2020/03/08/Domain-Name-System-DNS/</loc>
+    
+    <lastmod>2020-03-12T13:59:53.513Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://gaomc66.github.io/2020/03/08/CI-CD-and-AWS-CodeDeploy/</loc>
+    
+    <lastmod>2020-03-08T05:42:10.731Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://gaomc66.github.io/category/index.html</loc>
     
     <lastmod>2020-03-04T04:33:00.164Z</lastmod>

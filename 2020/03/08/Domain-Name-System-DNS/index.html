@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Mengchen Gao">
+
+
+    <meta name="subtitle" content="Back-end Developer">
+
+
+
+
+<title>Domain Name System | ReaperBuilder</title>
+
+
+
+    <link rel="icon" href="/ReBulder/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/ReBulder/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/ReBulder/js/script.js"></script>
+    
+    <script src="/ReBulder/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/ReBulder/">Mengchen&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/ReBulder/archives">Posts</a>
+                
+                    <a class="menu-item" href="/ReBulder/category">Categories</a>
+                
+                    <a class="menu-item" href="/ReBulder/tag">Tags</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/ReBulder/">Mengchen&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/ReBulder/archives">Posts</a>
+                
+                    <a class="menu-item" href="/ReBulder/category">Categories</a>
+                
+                    <a class="menu-item" href="/ReBulder/tag">Tags</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">Domain Name System</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Mengchen Gao</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">March 8, 2020&nbsp;&nbsp;0:35:22</a>
+                        </span>
+                    
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="Domain-Name-System-DNS"><a href="#Domain-Name-System-DNS" class="headerlink" title="Domain Name System (DNS)"></a>Domain Name System (DNS)</h1><h3 id="What-is-DNS"><a href="#What-is-DNS" class="headerlink" title="What is DNS?"></a>What is DNS?</h3><p>• The Domain Name System<br>• The mechanism by which internet software translate name to attributes such as addresses<br>• A globally distributed, stateless, scalable, reliable database<br>    stateless: no authentication needed</p>
+<h3 id="DNS-ComponentsDNS-is-comprised-of-three-components"><a href="#DNS-ComponentsDNS-is-comprised-of-three-components" class="headerlink" title="DNS ComponentsDNS is comprised of three components"></a>DNS ComponentsDNS is comprised of three components</h3><ul>
+<li>• Name space (TLDs)<pre><code>*what is TLDs? 
+{% blockquote Seth Godin https://en.wikipedia.org/wiki/Top-level_domain  %}
+		 Top level Domain
+		{% endblockquote %}
+</code></pre></li>
+<li>• Name Servers</li>
+<li>• Resolvers</li>
+</ul>
+<h3 id="Why-DNS"><a href="#Why-DNS" class="headerlink" title="Why DNS?"></a>Why DNS?</h3><ul>
+<li>•Human-friendly</li>
+<li>•Is this easy to remember -<a href="https://216.58.219.196" target="_blank" rel="noopener">https://216.58.219.196</a> ?</li>
+<li>•How about this -<a href="https://www.google.com?•De-centralized" target="_blank" rel="noopener">https://www.google.com?•De-centralized</a> Administration</li>
+<li>*Elastic IP Address? tom</li>
+<li>De-centralized Administration</li>
+</ul>
+<h3 id="Global-Distribution"><a href="#Global-Distribution" class="headerlink" title="Global Distribution"></a>Global Distribution</h3><ul>
+<li>•Data is maintained locally, but retrievable globally</li>
+<li>•No single server has all the DNS data</li>
+<li>•Remote DNS data is locally cacheable to improve performance</li>
+</ul>
+<h3 id="Loose-Coherency"><a href="#Loose-Coherency" class="headerlink" title="Loose Coherency"></a>Loose Coherency</h3><ul>
+<li>•Each version of a subnet of the database (a zone) has a serial number which is incremented on each database change</li>
+<li>•Changes to the master copy of the database are propagated to replicas</li>
+<li>•Cached data expires according to the timeout set (TTL)</li>
+</ul>
+<h3 id="Scalability"><a href="#Scalability" class="headerlink" title="Scalability"></a>Scalability</h3><ul>
+<li>•No limit on the size of the database </li>
+<li>•No limit to the number of queries</li>
+<li>•Queries distributed among masters, slaves, and caches</li>
+</ul>
+<h3 id="Reliability•Data-is-replicated"><a href="#Reliability•Data-is-replicated" class="headerlink" title="Reliability•Data is replicated"></a>Reliability•Data is replicated</h3><ul>
+<li>•Client can query master or any of the slave servers</li>
+<li>•Client will typically query local caches</li>
+</ul>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Mengchen Gao</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://gaomc66.github.io/2020/03/08/Domain-Name-System-DNS/">https://gaomc66.github.io/2020/03/08/Domain-Name-System-DNS/</a></span>
+                    </p>
+                
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/ReBulder/tags/AWS/"># AWS</a>
+                    
+                        <a href="/ReBulder/tags/DNS/"># DNS</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/ReBulder/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/ReBulder/2020/03/08/CI-CD-and-AWS-CodeDeploy/">CI/CD and AWS CodeDeploy</a>
+            
+            
+            <a class="next" rel="next" href="/ReBulder/2020/03/06/AWS-AMI/">AWS AMI (Build with CircleCI)</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Mengchen Gao | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>
