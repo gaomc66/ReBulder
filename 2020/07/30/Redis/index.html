@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Mengchen Gao">
+
+
+    <meta name="subtitle" content="Back-end Developer">
+
+
+
+
+<title>Redis Set Up | ReaperBuilder</title>
+
+
+
+    <link rel="icon" href="/ReBulder/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/ReBulder/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/ReBulder/js/script.js"></script>
+    
+    <script src="/ReBulder/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/ReBulder/">Mengchen&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/ReBulder/archives">Posts</a>
+                
+                    <a class="menu-item" href="/ReBulder/category">Categories</a>
+                
+                    <a class="menu-item" href="/ReBulder/tag">Tags</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/ReBulder/">Mengchen&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/ReBulder/archives">Posts</a>
+                
+                    <a class="menu-item" href="/ReBulder/category">Categories</a>
+                
+                    <a class="menu-item" href="/ReBulder/tag">Tags</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">Redis Set Up</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Mengchen Gao</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">July 30, 2020&nbsp;&nbsp;3:45:52</a>
+                        </span>
+                    
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h1><h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><figure class="highlight shell"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> brew install redis</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> brew info redis</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> redis-cli ping</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> get pong <span class="keyword">if</span> run successfully</span></span><br></pre></td></tr></table></figure>
+<h2 id="Commands"><a href="#Commands" class="headerlink" title="Commands"></a>Commands</h2><figure class="highlight shell"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> redis-cli</span></span><br><span class="line">redis 127.0.0.1:6379&gt; PING</span><br><span class="line">PONG</span><br><span class="line"></span><br><span class="line">redis 127.0.0.1:6379&gt; CONFIG GET CONFIG_SESTTING_NAME</span><br><span class="line">redis 127.0.0.1:6379&gt; CONFIG SET CONFIG_SETTING_NAME NEW_CONFIG_VALUE</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">String</span></span><br><span class="line">redis 127.0.0.1:6379&gt; SET A "test" (&lt;= 512MB)</span><br><span class="line">OK</span><br><span class="line">redis 127.0.0.1:6379&gt; GET A "test" </span><br><span class="line">"test"</span><br><span class="line">redis 127.0.0.1:6379&gt; DEL A </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">Hash</span></span><br><span class="line">127.0.0.1:6379&gt; HMSET hmset A "test1" B "test2" C "test3"</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379&gt; HGET hmset</span><br><span class="line">(error) ERR wrong number of arguments for 'hget' command</span><br><span class="line">127.0.0.1:6379&gt; HGET hmset A</span><br><span class="line">"test1"</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">list</span></span><br><span class="line">127.0.0.1:6379&gt; lpush L testC</span><br><span class="line">(integer) 2</span><br><span class="line">127.0.0.1:6379&gt; lrange L 0 1</span><br><span class="line">1) "testC"</span><br><span class="line">2) "testB"</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">Set</span></span><br><span class="line">127.0.0.1:6379&gt; sadd A test1</span><br><span class="line">(integer) 1</span><br><span class="line">127.0.0.1:6379&gt; sadd A test2</span><br><span class="line">(integer) 1</span><br><span class="line">127.0.0.1:6379&gt; sadd A test1</span><br><span class="line">(integer) 0</span><br><span class="line">127.0.0.1:6379&gt; smembers A</span><br><span class="line">1) "test1"</span><br><span class="line">2) "test2"</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">ZSet : has a double score could be ranged</span></span><br><span class="line">127.0.0.1:6379&gt; zadd A 5 test3</span><br><span class="line">(integer) 1</span><br><span class="line">127.0.0.1:6379&gt; zadd A 4 test3</span><br><span class="line">(integer) 0</span><br><span class="line">127.0.0.1:6379&gt; zadd A 5 test2</span><br><span class="line">(integer) 1</span><br><span class="line">127.0.0.1:6379&gt; zadd A 6 test3</span><br><span class="line">(integer) 0</span><br><span class="line">127.0.0.1:6379&gt; ZRANGEBYSCORE A 0 10</span><br><span class="line">1) "test2"</span><br><span class="line">2) "test3"</span><br><span class="line">127.0.0.1:6379&gt;</span><br></pre></td></tr></table></figure>
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Mengchen Gao</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://gaomc66.github.io/2020/07/30/Redis/">https://gaomc66.github.io/2020/07/30/Redis/</a></span>
+                    </p>
+                
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/ReBulder/tags/Redis/"># Redis</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/ReBulder/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+            
+            <a class="next" rel="next" href="/ReBulder/2020/03/08/CI-CD-and-AWS-CodeDeploy/">CI/CD and AWS CodeDeploy</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Mengchen Gao | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>
